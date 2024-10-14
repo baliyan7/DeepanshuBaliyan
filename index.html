@@ -27,8 +27,38 @@
             background: #f0f2f5;
 
         }
-       
-       
+
+
+        #loading-bar-spinner.spinner {
+            left: 50%;
+            margin-left: -20px;
+            top: 50%;
+            margin-top: -20px;
+            position: absolute;
+            z-index: 19 !important;
+            animation: loading-bar-spinner 400ms linear infinite;
+        }
+
+        #loading-bar-spinner.spinner .spinner-icon {
+            width: 40px;
+            height: 40px;
+            border: solid 4px transparent;
+            border-top-color: #00C8B1 !important;
+            border-left-color: #00C8B1 !important;
+            border-radius: 50%;
+        }
+
+        @keyframes loading-bar-spinner {
+            0% {
+                transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
 
         .banner {
             position: relative;
@@ -97,8 +127,8 @@
 
         @media(min-aspect-ratio: 16/9) {
             .banner video {
-                
-                 width: 100%;
+                width: 100%;
+
                 height: auto;
             }
         }
@@ -619,88 +649,88 @@
 
 
 
-/* Profile Icon in Header */
-.profile-icon img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    position: relative;
-    top: 3.5px;
-    right: 20px;
-}
+        /* Profile Icon in Header */
+        .profile-icon img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            position: relative;
+            top: 3.5px;
+            right: 20px;
+        }
 
-/* Profile Modal */
-.profile-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 300px;
-    height: 100%;
-    background-color: #fff;
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out;
-    transform: translateX(100%);
-    position: absolute;
-}
+        /* Profile Modal */
+        .profile-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: auto;
+            background-color: #fff;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(100%);
+            position: absolute;
+        }
 
-.profile-modal-content {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+        .profile-modal-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-.profile-pic {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-    object-fit: cover;
-}
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            object-fit: cover;
+        }
 
-.profile-details p {
-    font-size: 14px;
-    margin: 10px 0;
-}
+        .profile-details p {
+            font-size: 14px;
+            margin: 10px 0;
+        }
 
-.profile-details input,
-.profile-details select {
-    width: 100%;
-    padding: 5px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
+        .profile-details input,
+        .profile-details select {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
 
-#saveProfileBtn {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    border-radius: 5px;
-}
+        #saveProfileBtn {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 5px;
+        }
 
-#saveProfileBtn:hover {
-    background-color: #45a049;
-}
+        #saveProfileBtn:hover {
+            background-color: #45a049;
+        }
 
-.close-profile-btn {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 20px;
-    cursor: pointer;
-}
+        .close-profile-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 20px;
+            cursor: pointer;
+        }
 
-/* Animation when the profile modal opens */
-.profile-modal.open {
-    transform: translateX(0);
-}
+        /* Animation when the profile modal opens */
+        .profile-modal.open {
+            transform: translateX(0);
+        }
 
 
 
@@ -1481,6 +1511,10 @@
 </head>
 
 <body>
+    <!-- Loader container -->
+    <div id="loading-bar-spinner" class="spinner">
+        <div class="spinner-icon"></div>
+    </div>
     <header>
         <div class="logo">
             <a href="#"><img src="./All-photos/logobaliyanwebsite.jpeg" alt="logo"></a>
@@ -1517,7 +1551,7 @@
 
 
 
-        
+
 
 
 
@@ -1529,7 +1563,8 @@
 
 
         <div id="profileIcon" class="profile-icon">
-            <img src="https://static.vecteezy.com/system/resources/previews/010/260/479/non_2x/default-avatar-profile-icon-of-social-media-user-in-clipart-style-vector.jpg" alt="Profile Icon">
+            <img src="https://static.vecteezy.com/system/resources/previews/010/260/479/non_2x/default-avatar-profile-icon-of-social-media-user-in-clipart-style-vector.jpg"
+                alt="Profile Icon">
         </div>
 
     </header>
@@ -1723,9 +1758,9 @@
             </form>
         </div>
     </section>
-    
-       
-    
+
+
+
     <!-- Profile Modal Section -->
     <div id="profileModal" class="profile-modal">
         <div class="profile-modal-content">
@@ -1752,7 +1787,7 @@
             </form>
         </div>
     </div>
-    
+
 
 
 
@@ -3103,168 +3138,179 @@
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-    const profileIcon = document.getElementById('profileIcon');
-    const profileModal = document.getElementById('profileModal');
-    const closeProfileBtn = document.querySelector('.close-profile-btn');
-    const changeProfilePicBtn = document.getElementById('changeProfilePicBtn');
-    const profilePicUpload = document.getElementById('profilePicUpload');
-    const profilePicPreview = document.getElementById('profilePicPreview');
-    const saveProfileBtn = document.getElementById('saveProfileBtn');
+        // Wait until the entire page (including content) is fully loaded
+        window.addEventListener('load', function () {
+            // Hide the loader after page is loaded
+            var loader = document.getElementById('loading-bar-spinner');
+            var content = document.getElementById('content');
 
-    // Show profile modal when the profile icon is clicked
-    profileIcon.addEventListener('click', () => {
-        profileModal.style.display = 'block';
-        setTimeout(() => {
-            profileModal.classList.add('open');
-        }, 10); // Delay to allow the transition effect
-    });
-
-    // Hide profile modal when the close button is clicked
-    closeProfileBtn.addEventListener('click', () => {
-        profileModal.classList.remove('open');
-        setTimeout(() => {
-            profileModal.style.display = 'none';
-        }, 300); // Delay to allow transition effect to complete
-    });
-
-    // Close the modal if the user clicks outside of it
-    window.addEventListener('click', (event) => {
-        if (event.target === profileModal) {
-            profileModal.classList.remove('open');
-            setTimeout(() => {
-                profileModal.style.display = 'none';
-            }, 300);
-        }
-    });
-
-    // Handle profile picture change
-    changeProfilePicBtn.addEventListener('click', () => {
-        profilePicUpload.click();
-    });
-
-    profilePicUpload.addEventListener('change', (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                profilePicPreview.src = e.target.result; // Update profile picture preview
-            };
-            reader.readAsDataURL(file); // Read the file and trigger onload event
-        }
-    });
-
-    // Save updated profile details
-    saveProfileBtn.addEventListener('click', () => {
-        const userName = document.getElementById('userName').value;
-        const userEmail = document.getElementById('userEmail').value;
-        const userPhone = document.getElementById('userPhone').value;
-        const userAge = document.getElementById('userAge').value;
-        const userGender = document.getElementById('userGender').value;
-
-        // Here, you would typically send this data to a back-end server.
-        // For now, let's just log it to the console or store it in localStorage as an example.
-
-        console.log({
-            name: userName,
-            email: userEmail,
-            phone: userPhone,
-            age: userAge,
-            gender: userGender,
-            profilePic: profilePicPreview.src, // Profile pic preview URL (base64)
+            loader.style.display = 'none'; // Hide loader
+            content.style.display = 'block'; // Show main content
         });
 
-        // Example: Saving to localStorage (could be replaced with a backend API call)
-        localStorage.setItem('userProfile', JSON.stringify({
-            name: userName,
-            email: userEmail,
-            phone: userPhone,
-            age: userAge,
-            gender: userGender,
-            profilePic: profilePicPreview.src,
-        }));
 
-        alert('Profile updated successfully!');
-        profileModal.classList.remove('open');
-        setTimeout(() => {
-            profileModal.style.display = 'none';
-        }, 300);
-    });
+        document.addEventListener('DOMContentLoaded', () => {
+            const profileIcon = document.getElementById('profileIcon');
+            const profileModal = document.getElementById('profileModal');
+            const closeProfileBtn = document.querySelector('.close-profile-btn');
+            const changeProfilePicBtn = document.getElementById('changeProfilePicBtn');
+            const profilePicUpload = document.getElementById('profilePicUpload');
+            const profilePicPreview = document.getElementById('profilePicPreview');
+            const saveProfileBtn = document.getElementById('saveProfileBtn');
 
-    // Optionally, you could load saved profile data from localStorage to pre-fill the form on page load.
-    const savedProfile = localStorage.getItem('userProfile');
-    if (savedProfile) {
-        const profileData = JSON.parse(savedProfile);
-        document.getElementById('userName').value = profileData.name;
-        document.getElementById('userEmail').value = profileData.email;
-        document.getElementById('userPhone').value = profileData.phone;
-        document.getElementById('userAge').value = profileData.age;
-        document.getElementById('userGender').value = profileData.gender;
-        profilePicPreview.src = profileData.profilePic;
-    }
-});
+            // Show profile modal when the profile icon is clicked
+            profileIcon.addEventListener('click', () => {
+                profileModal.style.display = 'block';
+                setTimeout(() => {
+                    profileModal.classList.add('open');
+                }, 10); // Delay to allow the transition effect
+            });
+
+            // Hide profile modal when the close button is clicked
+            closeProfileBtn.addEventListener('click', () => {
+                profileModal.classList.remove('open');
+                setTimeout(() => {
+                    profileModal.style.display = 'none';
+                }, 300); // Delay to allow transition effect to complete
+            });
+
+            // Close the modal if the user clicks outside of it
+            window.addEventListener('click', (event) => {
+                if (event.target === profileModal) {
+                    profileModal.classList.remove('open');
+                    setTimeout(() => {
+                        profileModal.style.display = 'none';
+                    }, 300);
+                }
+            });
+
+            // Handle profile picture change
+            changeProfilePicBtn.addEventListener('click', () => {
+                profilePicUpload.click();
+            });
+
+            profilePicUpload.addEventListener('change', (event) => {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        profilePicPreview.src = e.target.result; // Update profile picture preview
+                    };
+                    reader.readAsDataURL(file); // Read the file and trigger onload event
+                }
+            });
+
+            // Save updated profile details
+            saveProfileBtn.addEventListener('click', () => {
+                const userName = document.getElementById('userName').value;
+                const userEmail = document.getElementById('userEmail').value;
+                const userPhone = document.getElementById('userPhone').value;
+                const userAge = document.getElementById('userAge').value;
+                const userGender = document.getElementById('userGender').value;
+
+                // Here, you would typically send this data to a back-end server.
+                // For now, let's just log it to the console or store it in localStorage as an example.
+
+                console.log({
+                    name: userName,
+                    email: userEmail,
+                    phone: userPhone,
+                    age: userAge,
+                    gender: userGender,
+                    profilePic: profilePicPreview.src, // Profile pic preview URL (base64)
+                });
+
+                // Example: Saving to localStorage (could be replaced with a backend API call)
+                localStorage.setItem('userProfile', JSON.stringify({
+                    name: userName,
+                    email: userEmail,
+                    phone: userPhone,
+                    age: userAge,
+                    gender: userGender,
+                    profilePic: profilePicPreview.src,
+                }));
+
+                alert('Profile updated successfully!');
+                profileModal.classList.remove('open');
+                setTimeout(() => {
+                    profileModal.style.display = 'none';
+                }, 300);
+            });
+
+            // Optionally, you could load saved profile data from localStorage to pre-fill the form on page load.
+            const savedProfile = localStorage.getItem('userProfile');
+            if (savedProfile) {
+                const profileData = JSON.parse(savedProfile);
+                document.getElementById('userName').value = profileData.name;
+                document.getElementById('userEmail').value = profileData.email;
+                document.getElementById('userPhone').value = profileData.phone;
+                document.getElementById('userAge').value = profileData.age;
+                document.getElementById('userGender').value = profileData.gender;
+                profilePicPreview.src = profileData.profilePic;
+            }
+        });
 
 
 
 
-//register js is here
-      document.addEventListener('DOMContentLoaded', () => {
-    const signInModal = document.getElementById('signInModal');
-    const closeSignInBtn = document.querySelector('.close-btn');
-    const registerBtn = document.getElementById('register'); // Existing register button in the modal
-    const loginBtn = document.getElementById('login');
-    const container = document.getElementById('container');
+        //register js is here
+        document.addEventListener('DOMContentLoaded', () => {
+            const signInModal = document.getElementById('signInModal');
+            const closeSignInBtn = document.querySelector('.close-btn');
+            const registerBtn = document.getElementById('register'); // Existing register button in the modal
+            const loginBtn = document.getElementById('login');
+            const container = document.getElementById('container');
 
-    // New Register button in the header
-    const headerRegisterBtn = document.getElementById('headerRegisterBtn');
+            // New Register button in the header
+            const headerRegisterBtn = document.getElementById('headerRegisterBtn');
 
-    // Automatically show the registration modal when the page loads (if needed)
-    signInModal.style.display = 'block'; // Uncomment if needed to auto-load modal on page load
+            // Automatically show the registration modal when the page loads (if needed)
+            signInModal.style.display = 'block'; // Uncomment if needed to auto-load modal on page load
 
-    // Function to open the modal and switch to the sign-up view
-    const showSignUpModal = () => {
-        signInModal.style.display = 'block'; // Show the modal
-        container.classList.add('active');   // Switch to "Sign Up" view (by adding active class)
-    };
+            // Function to open the modal and switch to the sign-up view
+            const showSignUpModal = () => {
+                signInModal.style.display = 'block'; // Show the modal
+                container.classList.add('active');   // Switch to "Sign Up" view (by adding active class)
+            };
 
-    // Function to open the modal and switch to the sign-in view
-    const showSignInModal = () => {
-        signInModal.style.display = 'block'; // Show the modal
-        container.classList.remove('active'); // Switch to "Sign In" view (by removing active class)
-    };
+            // Function to open the modal and switch to the sign-in view
+            const showSignInModal = () => {
+                signInModal.style.display = 'block'; // Show the modal
+                container.classList.remove('active'); // Switch to "Sign In" view (by removing active class)
+            };
 
-    // Function to close the modal
-    const closeModal = () => {
-        signInModal.style.display = 'none';  // Hide the modal
-    };
+            // Function to close the modal
+            const closeModal = () => {
+                signInModal.style.display = 'none';  // Hide the modal
+            };
 
-    // Show the sign-up form when the "Register" button in modal is clicked
-    registerBtn.addEventListener('click', () => {
-        showSignUpModal(); // Opens the modal and shows the "Sign Up" form
-    });
+            // Show the sign-up form when the "Register" button in modal is clicked
+            registerBtn.addEventListener('click', () => {
+                showSignUpModal(); // Opens the modal and shows the "Sign Up" form
+            });
 
-    // Show the sign-in form when the "Sign In" button is clicked
-    loginBtn.addEventListener('click', () => {
-        showSignInModal(); // Opens the modal and shows the "Sign In" form
-    });
+            // Show the sign-in form when the "Sign In" button is clicked
+            loginBtn.addEventListener('click', () => {
+                showSignInModal(); // Opens the modal and shows the "Sign In" form
+            });
 
-    // Close the modal when the close button is clicked
-    closeSignInBtn.addEventListener('click', () => {
-        closeModal(); // Closes the modal
-    });
+            // Close the modal when the close button is clicked
+            closeSignInBtn.addEventListener('click', () => {
+                closeModal(); // Closes the modal
+            });
 
-    // Hide modal when clicking outside of the modal content
-    window.addEventListener('click', (event) => {
-        if (event.target === signInModal) {
-            closeModal(); // Closes the modal if clicked outside modal content
-        }
-    });
+            // Hide modal when clicking outside of the modal content
+            window.addEventListener('click', (event) => {
+                if (event.target === signInModal) {
+                    closeModal(); // Closes the modal if clicked outside modal content
+                }
+            });
 
-    // Show the sign-up modal when the header "Register" button is clicked
-    headerRegisterBtn.addEventListener('click', () => {
-        showSignUpModal(); // Open the modal and show the "Sign Up" form
-    });
-});
+            // Show the sign-up modal when the header "Register" button is clicked
+            headerRegisterBtn.addEventListener('click', () => {
+                showSignUpModal(); // Open the modal and show the "Sign Up" form
+            });
+        });
 
 
 
