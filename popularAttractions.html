@@ -30,7 +30,29 @@
                 font-family: sans-serif;
                 box-sizing: border-box;
             }
+            #loading-bar-spinner.spinner {
+    left: 50%;
+    margin-left: -20px;
+    top: 50%;
+    margin-top: -20px;
+    position: absolute;
+    z-index: 19 !important;
+    animation: loading-bar-spinner 400ms linear infinite;
+}
 
+#loading-bar-spinner.spinner .spinner-icon {
+    width: 40px;
+    height: 40px;
+    border:  solid 4px transparent;
+    border-top-color:  #00C8B1 !important;
+    border-left-color: #00C8B1 !important;
+    border-radius: 50%;
+}
+
+@keyframes loading-bar-spinner {
+  0%   { transform: rotate(0deg);   transform: rotate(0deg); }
+  100% { transform: rotate(360deg); transform: rotate(360deg); }
+}
             /* Header styles */
             header {
                 background-color: #CDDFE2;
@@ -636,6 +658,8 @@
     </head>
 
     <body>
+        <!-- Loader container -->
+   <div id="loading-bar-spinner" class="spinner"><div class="spinner-icon"></div></div>
         <header>
             <div class="logo">
                 <a href="#"><img src="./All-photos/logobaliyanwebsite.jpeg" alt="logo"></a>
@@ -2111,9 +2135,9 @@
                         <li><a href="#">Service Guarantee</a></li>
                         <li><a href="#">More Service Info</a></li>
                         <li>
-                            <a href="#"><img src="./All-photos/facebook footer image.png" alt="Facebook"></a>
-                            <a href="#"><img src="./All-photos/twitter-icon footer image.png" alt="Twitter"></a>
-                            <a href="#"><img src="./All-photos/youtube icon footer image.png" alt="YouTube"></a>
+                            <a href="#"><img src="/All-photos/facebook footer image.png" alt="Facebook"></a>
+                            <a href="#"><img src="/All-photos/twitter-icon footer image.png" alt="Twitter"></a>
+                            <a href="#"><img src="All-photos/youtube icon footer image.png" alt="YouTube"></a>
                         </li>
                     </ul>
                 </div>
@@ -2123,8 +2147,8 @@
                         <li><a href="#">Privacy Statement</a>
                         </li>
 
-                        <li><a href="termsandcond.html">Terms & Conditions</a></li>
-                        <li><a href="aboutus.html">About CrashCoder.com</a></li>
+                        <li><a href="/termsandcond.html">Terms & Conditions</a></li>
+                        <li><a href="/aboutus.html">About CrashCoder.com</a></li>
 
 
                     </ul>
@@ -2134,9 +2158,9 @@
                     <ul>
                         <li><a href="#">Security</a></li>
                         <li><a href="#">Rewards</a></li>
-                        <li><a href="explorehotels.html">Hotels</a></li>
-                        <li><a href="hiddenGems.html">Hidden Gems</a></li>
-                        
+
+                        <li><a href="#hiddenlink">Hidden Gems</a></li>
+                        <li><a href="#">Popular Attraction</a></li>
 
                     </ul>
                 </div>
@@ -2146,6 +2170,16 @@
             </div>
         </footer>
         <script>
+            // Wait until the entire page (including content) is fully loaded
+window.addEventListener('load', function () {
+    // Hide the loader after page is loaded
+    var loader = document.getElementById('loading-bar-spinner');
+    var content = document.getElementById('content');
+
+    loader.style.display = 'none'; // Hide loader
+    content.style.display = 'block'; // Show main content
+});
+
             const cardGrid = document.getElementById('card-grid');
             const nextArrow = document.getElementById('next-arrow');
             const prevArrow = document.getElementById('prev-arrow');
