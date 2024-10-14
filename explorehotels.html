@@ -29,6 +29,29 @@
             box-sizing: border-box;
         }
 
+        #loading-bar-spinner.spinner {
+    left: 50%;
+    margin-left: -20px;
+    top: 50%;
+    margin-top: -20px;
+    position: absolute;
+    z-index: 19 !important;
+    animation: loading-bar-spinner 400ms linear infinite;
+}
+
+#loading-bar-spinner.spinner .spinner-icon {
+    width: 40px;
+    height: 40px;
+    border:  solid 4px transparent;
+    border-top-color:  #00C8B1 !important;
+    border-left-color: #00C8B1 !important;
+    border-radius: 50%;
+}
+
+@keyframes loading-bar-spinner {
+  0%   { transform: rotate(0deg);   transform: rotate(0deg); }
+  100% { transform: rotate(360deg); transform: rotate(360deg); }
+}
         /* Header styles */
         header {
 
@@ -221,8 +244,9 @@
             right: 0;
             bottom: 0;
             z-index: -1;
-            width: 1425px;
             border-radius: 20px;
+            
+           width: 1425px;
         }
 
         @media(min-aspect-ratio: 16/9) {
@@ -808,8 +832,10 @@
 </head>
 
 <body>
-
+<!-- Loader container -->
+<div id="loading-bar-spinner" class="spinner"><div class="spinner-icon"></div></div>
     <header>
+
         <div class="logo">
             <a href="#"><img src="./All-photos/logobaliyanwebsite.jpeg" alt="logo"></a>
         </div>
@@ -1901,6 +1927,18 @@
         </div>
     </footer>
     <script>
+// Wait until the entire page (including content) is fully loaded
+window.addEventListener('load', function () {
+    // Hide the loader after page is loaded
+    var loader = document.getElementById('loading-bar-spinner');
+    var content = document.getElementById('content');
+
+    loader.style.display = 'none'; // Hide loader
+    content.style.display = 'block'; // Show main content
+});
+
+
+
         document.addEventListener('DOMContentLoaded', function () {
             const buttons = document.querySelectorAll('.state-btn');
             const sections = document.querySelectorAll('.state-section');
