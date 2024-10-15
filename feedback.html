@@ -28,29 +28,78 @@
             font-family: sans-serif;
             box-sizing: border-box;
         }
-        #loading-bar-spinner.spinner {
-    left: 50%;
-    margin-left: -20px;
-    top: 50%;
-    margin-top: -20px;
-    position: absolute;
-    z-index: 19 !important;
-    animation: loading-bar-spinner 400ms linear infinite;
-}
 
-#loading-bar-spinner.spinner .spinner-icon {
-    width: 40px;
-    height: 40px;
-    border:  solid 4px transparent;
-    border-top-color:  #00C8B1 !important;
-    border-left-color: #00C8B1 !important;
-    border-radius: 50%;
-}
 
-@keyframes loading-bar-spinner {
-  0%   { transform: rotate(0deg);   transform: rotate(0deg); }
-  100% { transform: rotate(360deg); transform: rotate(360deg); }
-}
+        /* Loader overlay that doesn't affect the layout */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            /* Semi-transparent background */
+            z-index: 9999;
+            /* High z-index to ensure it overlays everything */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+            /* Smooth fade-out effect */
+        }
+
+        /* Spinner styling */
+        .spinner {
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+
+        .circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #3498db;
+            position: absolute;
+            animation: bounce 1.5s infinite ease-in-out;
+        }
+
+        .circle1 {
+            left: 0;
+            animation-delay: 0s;
+        }
+
+        .circle2 {
+            left: 30px;
+            animation-delay: 0.3s;
+        }
+
+        .circle3 {
+            left: 60px;
+            animation-delay: 0.6s;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Ensure the content is initially hidden */
+        #content {
+            visibility: hidden;
+            /* This ensures the content is hidden while the loader is visible */
+        }
+
+
+
+
         /* Header styles */
         header {
             padding: 10px;
@@ -84,7 +133,7 @@
         }
 
         section {
-background-color: #fff7ff;
+            background-color: #fff7ff;
             padding: 20px;
         }
 
@@ -97,10 +146,10 @@ background-color: #fff7ff;
         }
 
         fieldset {
-           
+
             border: 8px solid #ddd;
             padding: 10px;
-            
+
             border-radius: 5px;
         }
 
@@ -170,7 +219,7 @@ background-color: #fff7ff;
             align-items: center;
         }
 
-       
+
         .contact-btn {
             background: rgb(0, 0, 0);
             color: #fff;
@@ -263,7 +312,7 @@ background-color: #fff7ff;
             color: #010001;
             text-align: center;
         }
-         
+
         form {
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             max-width: 600px;
@@ -298,7 +347,7 @@ background-color: #fff7ff;
         }
 
         button:hover {
-           transition: 0.3s;
+            transition: 0.3s;
             background: #1668e3;
         }
 
@@ -312,11 +361,13 @@ background-color: #fff7ff;
             margin-top: 40px;
             margin-bottom: 40px;
         }
+
         .reviewsec h2 {
             text-align: center;
             margin-bottom: 10px;
-        
-    }
+
+        }
+
         #reviewsContainer {
             margin-top: 0%;
             display: flex;
@@ -434,164 +485,180 @@ background-color: #fff7ff;
 </head>
 
 <body>
+
     <!-- Loader container -->
-   <div id="loading-bar-spinner" class="spinner"><div class="spinner-icon"></div></div>
-    <header>
-        <div class="logo">
-            <a href="#"><img src="./All-photos/logobaliyanwebsite.jpeg" alt="logo"></a>
+    <div id="loader">
+        <div class="spinner">
+            <div class="circle circle1"></div>
+            <div class="circle circle2"></div>
+            <div class="circle circle3"></div>
         </div>
+    </div>
 
-        <div class="mainsearch">
-            <input type="text" id="location" placeholder="Search reviews here" required>
-        </div>
-        <div>
-            <button class="mainsearchbutton">Search</button>
-        </div>
-        <div class="header-title"></div>
-        <button id="contactBtn" class="contact-btn">
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                </ul>
-            </nav>
-        </button>
-        <button id="contactBtn" class="contact-btn">
-            <nav>
-                <ul>
-                    <li><a href="explorehotels.html">Hotels</a></li>
-                </ul>
-            </nav>
-        </button>
-        <button id="contactBtn" class="contact-btn">
-            <nav>
-                <ul>
-                    <li><a href="hiddenGems.html">Hidden Gems</a></li>
-                </ul>
-            </nav>
-        </button>
-        <button id="contactBtn" class="contact-btn">
-            <nav>
-                <ul>
-                    <li><a href="popularAttractions.html">Destinations</a></li>
-                </ul>
-            </nav>
-        </button>
+    <!-- Your existing website content -->
+    <div id="content">
+        <header>
+            <div class="logo">
+                <a href="#"><img src="./All-photos/logobaliyanwebsite.jpeg" alt="logo"></a>
+            </div>
 
-    </header>
-
-    <div class="banner">
-        <video autoplay loop muted plays-inline>
-            <source src="./All-videos/websiteVideo 3 feedback.mp4" type="video/mp4">
-        </video>
-
-        <div class="content">
-            <h1>UPLOAD REVIEWS</h1>
+            <div class="mainsearch">
+                <input type="text" id="location" placeholder="Search reviews here" required>
+            </div>
             <div>
-                <button class="button">
-                    <nav>
-                        <ul>
-                            <li><a href="#submit-review">Upload Now</a></li>
-                        </ul>
-                    </nav>
-                </button>
+                <button class="mainsearchbutton">Search</button>
+            </div>
+            <div class="header-title"></div>
+            <button id="contactBtn" class="contact-btn">
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                    </ul>
+                </nav>
+            </button>
+            <button id="contactBtn" class="contact-btn">
+                <nav>
+                    <ul>
+                        <li><a href="explorehotels.html">Hotels</a></li>
+                    </ul>
+                </nav>
+            </button>
+            <button id="contactBtn" class="contact-btn">
+                <nav>
+                    <ul>
+                        <li><a href="hiddenGems.html">Hidden Gems</a></li>
+                    </ul>
+                </nav>
+            </button>
+            <button id="contactBtn" class="contact-btn">
+                <nav>
+                    <ul>
+                        <li><a href="popularAttractions.html">Destinations</a></li>
+                    </ul>
+                </nav>
+            </button>
+
+        </header>
+
+        <div class="banner">
+            <video autoplay loop muted plays-inline>
+                <source src="./All-videos/websiteVideo 3 feedback.mp4" type="video/mp4">
+            </video>
+
+            <div class="content">
+                <h1>UPLOAD REVIEWS</h1>
+                <div>
+                    <button class="button">
+                        <nav>
+                            <ul>
+                                <li><a href="#submit-review">Upload Now</a></li>
+                            </ul>
+                        </nav>
+                    </button>
+                </div>
             </div>
         </div>
+        <div class="reviewsec" id="submit-review">
+            <h1>Customer Testimonials</h1>
+            <h2>Submit Your Review</h2>
+            <form id="reviewForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="rating">Rating (1 to 5):</label>
+                <select id="rating" name="rating" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+
+                <label for="reviewText">Review:</label>
+                <textarea id="reviewText" name="reviewText" rows="4" required></textarea>
+
+                <label for="photo">Upload Photo:</label>
+                <input type="file" id="photo" name="photo" accept="image/*">
+
+                <label for="video">Upload Video:</label>
+                <input type="file" id="video" name="video" accept="video/*">
+
+                <button type="submit">Submit Review</button>
+            </form>
+        </div>
+
+        <div class="reviewsec" id="reviews">
+            <h1>Customer Reviews</h1>
+            <div id="reviewsContainer">
+                <!-- Reviews will be dynamically inserted here -->
+            </div>
+        </div>
+        <script src="scripts.js"></script>
+        <footer>
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3><big>Contact Us</big></h3>
+                    <ul>
+                        <li><a href="#">Customer Support</a></li>
+                        <li><a href="#">Service Guarantee</a></li>
+                        <li><a href="#">More Service Info</a></li>
+                        <li>
+                            <a href="#"><img src="./All-photos/facebook footer image.png" alt="Facebook"></a>
+                            <a href="#"><img src="./All-photos/twitter-icon footer image.png" alt="Twitter"></a>
+                            <a href="#"><img src="./All-photos/youtube icon footer image.png" alt="YouTube"></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3><big> About Us </big></h3>
+                    <ul>
+                        <li><a href="#">Privacy Statement</a>
+                        </li>
+
+                        <li><a href="termsandcond.html">Terms & Conditions</a></li>
+                        <li><a href="aboutus.html">About CrashCoder.com</a></li>
+
+
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3><big>Other Services</big></h3>
+                    <ul>
+                        <li><a href="#">Security</a></li>
+                        <li><a href="explorehotels.html">Hotels</a></li>
+
+                        <li><a href="hiddenGems.html">Hidden Gems</a></li>
+                        <li><a href="popularAttractions.html">Popular Attraction</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="lastfooter">
+                <p>&copy; 2024 crashcoder.com All rights reserved.</p>
+            </div>
+        </footer>
     </div>
-    <div class="reviewsec" id="submit-review">
-        <h1>Customer Testimonials</h1>
-        <h2>Submit Your Review</h2>
-        <form id="reviewForm">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="rating">Rating (1 to 5):</label>
-            <select id="rating" name="rating" required>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-
-            <label for="reviewText">Review:</label>
-            <textarea id="reviewText" name="reviewText" rows="4" required></textarea>
-
-            <label for="photo">Upload Photo:</label>
-            <input type="file" id="photo" name="photo" accept="image/*">
-
-            <label for="video">Upload Video:</label>
-            <input type="file" id="video" name="video" accept="video/*">
-
-            <button type="submit">Submit Review</button>
-        </form>
-    </div>
-
-    <div class="reviewsec" id="reviews">
-        <h1>Customer Reviews</h1>
-        <div id="reviewsContainer">
-            <!-- Reviews will be dynamically inserted here -->
-        </div>
-    </div>
-    <script src="scripts.js"></script>
-    <footer>
-        <div class="footer-container">
-            <div class="footer-column">
-                <h3><big>Contact Us</big></h3>
-                <ul>
-                    <li><a href="#">Customer Support</a></li>
-                    <li><a href="#">Service Guarantee</a></li>
-                    <li><a href="#">More Service Info</a></li>
-                    <li>
-                        <a href="#"><img
-                                src="./All-photos/facebook footer image.png"
-                                alt="Facebook"></a>
-                        <a href="#"><img src="./All-photos/twitter-icon footer image.png"
-                                alt="Twitter"></a>
-                        <a href="#"><img
-                                src="./All-photos/youtube icon footer image.png"
-                                alt="YouTube"></a>
-                    </li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3><big> About Us </big></h3>
-                <ul>
-                    <li><a href="#">Privacy Statement</a>
-                    </li>
-
-                    <li><a href="termsandcond.html">Terms & Conditions</a></li>
-                    <li><a href="aboutus.html">About CrashCoder.com</a></li>
-
-
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3><big>Other Services</big></h3>
-                <ul>
-                    <li><a href="#">Security</a></li>
-                    <li><a href="explorehotels.html">Hotels</a></li>
-
-                    <li><a href="hiddenGems.html">Hidden Gems</a></li>
-                    <li><a href="popularAttractions.html">Popular Attraction</a></li>
-
-                </ul>
-            </div>
-        </div>
-        <div class="lastfooter">
-            <p>&copy; 2024 crashcoder.com All rights reserved.</p>
-        </div>
-    </footer>
 </body>
 <script>
-    // Wait until the entire page (including content) is fully loaded
-window.addEventListener('load', function () {
-    // Hide the loader after page is loaded
-    var loader = document.getElementById('loading-bar-spinner');
-    var content = document.getElementById('content');
 
-    loader.style.display = 'none'; // Hide loader
-    content.style.display = 'block'; // Show main content
-});
+    window.addEventListener('load', function () {
+        // Get the loader element
+        var loader = document.getElementById('loader');
+
+        // Get the content element
+        var content = document.getElementById('content');
+
+        // Hide the loader with a fade-out effect
+        loader.style.opacity = '0';
+
+        // After the fade-out effect, remove the loader entirely
+        setTimeout(function () {
+            loader.style.display = 'none';
+            content.style.visibility = 'visible'; // Reveal the main content
+        }, 500); // Adjust this time to match your transition duration (0.5s in this case)
+    });
+
+
 
     document.getElementById('reviewForm').addEventListener('submit', function (event) {
         event.preventDefault();
